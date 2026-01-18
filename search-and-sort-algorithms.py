@@ -69,5 +69,28 @@
 #     f=a.pop(d)
 #     a.insert(insert_at, f)
 #     print(a)
+import random
+numbers=list(range(1,1001))
+target=random.choice(numbers)
+position_linear=-1
+for i in range(len(numbers)):
+    if numbers[i]==target:
+        position_linear=i
+        break
+numbers.sort()
+low=0
+high=len(numbers)-1
+position_binary=-1
+while low<=high:
+    mid=(low+high)//2
+    if numbers[mid]==target:
+        position_binary=mid
+        break
+    elif numbers[mid]<target:
+        low=mid+1
+    else:
+        high=mid-2
+print(position_linear)
+print(position_binary)
 
 import time
