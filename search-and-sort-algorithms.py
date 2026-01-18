@@ -70,16 +70,21 @@
 #     a.insert(insert_at, f)
 #     print(a)
 import random
+import time
 numbers=list(range(1,1001))
 target=random.choice(numbers)
+start=time.time()
 position_linear=-1
 for i in range(len(numbers)):
     if numbers[i]==target:
         position_linear=i
         break
+end=time.time()
+linear_time=end-start
 numbers.sort()
 low=0
 high=len(numbers)-1
+start=time.time()
 position_binary=-1
 while low<=high:
     mid=(low+high)//2
@@ -89,8 +94,8 @@ while low<=high:
     elif numbers[mid]<target:
         low=mid+1
     else:
-        high=mid-2
-print(position_linear)
-print(position_binary)
-
-import time
+        high=mid-1
+end=time.time()
+binary_time=end-start
+print(position_linear,linear_time)
+print(position_binary,binary_time)
